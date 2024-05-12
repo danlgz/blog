@@ -1,6 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { Link, json, useLoaderData } from "@remix-run/react";
+import matter from "gray-matter";
 import PostListItem from "~/components/PostListItem";
+import { getDirs, getFile } from "~/utils/fs.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -9,7 +11,22 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader = async () => {
+  const dirs = (await getDirs("../posts")).filter(d => d.isDirectory()).map(d => d.name);
+  const fileContents = await Promise.all(
+    dirs.map((dir) => getFile(`../posts/${dir}/index.md`)),
+  );
+  const posts = dirs.map((slug, i) => {
+    const fileContent = fileContents[i];
+    const { data } = matter(fileContent);
+    return { slug, ...data } as { slug: string; title: string; date: string; description: string };
+  });
+
+  return json({ posts });
+}
+
 export default function Index() {
+  const { posts } = useLoaderData<typeof loader>();
   return (
     <main className="w-full max-w-screen-md mx-auto pt-16 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
@@ -19,23 +36,17 @@ export default function Index() {
       <p className="font-extralight mt-4 text-sm">Software Development / Management / Entrepreneurship</p>
 
       <div className="mt-12 flex flex-col gap-8">
-        <PostListItem
-          title="title"
-          date={new Date()}
-          spoiler="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
-        />
-
-        <PostListItem
-          title="title"
-          date={new Date()}
-          spoiler="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
-        />
-
-        <PostListItem
-          title="title"
-          date={new Date()}
-          spoiler="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
-        />
+        {
+          posts.map(post => (
+            <Link to={`/${post.slug}`} key={post.slug} className="hover:no-underline">
+              <PostListItem
+                title={post.title}
+                date={new Date(post.date)}
+                spoiler={post.description}
+              />
+            </Link>
+          ))
+        }
       </div>
     </main>
   );
