@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+    @apply text-4xl font-bold text-main dark:text-main-dark;
+}
+
+h2 {
+    @apply text-2xl font-bold text-main dark:text-main-dark;
+}
+
+h3 {
+    @apply text-xl font-bold text-main dark:text-main-dark;
+}
+
+h4 {
+    @apply text-lg font-bold text-main dark:text-main-dark;
+}
+
+a, p, li, span {
+    @apply text-main dark:text-main-dark;
+}

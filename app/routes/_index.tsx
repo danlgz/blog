@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import PostListItem from "~/components/PostListItem";
 
 export const meta: MetaFunction = () => {
   return [
@@ -9,33 +10,29 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <main className="w-full max-w-screen-md mx-auto pt-16 px-4 lg:px-0">
+      <h1>Daniel Lucas – Blog</h1>
+      <p className="font-extralight mt-4 text-sm">Software Development / Management / Entrepreneurship</p>
+
+      <div className="mt-12 flex flex-col gap-8">
+        <PostListItem
+          title="title"
+          date={new Date()}
+          spoiler="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+        />
+
+        <PostListItem
+          title="title"
+          date={new Date()}
+          spoiler="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+        />
+
+        <PostListItem
+          title="title"
+          date={new Date()}
+          spoiler="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+        />
+      </div>
+    </main>
   );
 }
