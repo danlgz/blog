@@ -32,6 +32,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   return [
     {
       title: `${data?.meta.title} – Daniel Lucas Blog`,
+      description: data?.meta.description,
     }
   ]
 }
