@@ -23,3 +23,11 @@ h4 {
 a, p, li, span {
     @apply text-main dark:text-main-dark;
 }
+
+a {
+    @apply hover:underline;
+}
+
+hr {
+    @apply border-t border-main dark:border-main-dark;
+}

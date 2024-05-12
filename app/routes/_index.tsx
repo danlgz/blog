@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 import PostListItem from "~/components/PostListItem";
 
 export const meta: MetaFunction = () => {
@@ -11,7 +12,10 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <main className="w-full max-w-screen-md mx-auto pt-16 px-4 lg:px-0">
-      <h1>Daniel Lucas – Blog</h1>
+      <div className="flex flex-row justify-between items-center">
+        <h1>Daniel Lucas – Blog</h1>
+        <Link to="https://danlgz.io" target="_blank" rel="noreferrer"><span>About</span></Link>
+      </div>
       <p className="font-extralight mt-4 text-sm">Software Development / Management / Entrepreneurship</p>
 
       <div className="mt-12 flex flex-col gap-8">
