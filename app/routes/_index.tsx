@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link, json, useLoaderData } from "@remix-run/react";
 import matter from "gray-matter";
+import Footer from "~/components/Footer";
 import PostListItem from "~/components/PostListItem";
 import { getDirs, getFile } from "~/utils/fs.server";
 
@@ -35,7 +36,7 @@ export default function Index() {
       </div>
       <p className="font-extralight mt-4 text-sm">Software Development / Management / Entrepreneurship</p>
 
-      <div className="mt-12 flex flex-col gap-8">
+      <div className="mt-16 flex flex-col gap-8">
         {
           posts.map(post => (
             <Link to={`/${post.slug}`} key={post.slug} className="hover:no-underline">
@@ -48,6 +49,8 @@ export default function Index() {
           ))
         }
       </div>
+
+      <Footer />
     </main>
   );
 }
