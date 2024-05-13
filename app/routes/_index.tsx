@@ -3,6 +3,7 @@ import { Link, json, useLoaderData } from "@remix-run/react";
 import matter from "gray-matter";
 import Footer from "~/components/Footer";
 import PostListItem from "~/components/PostListItem";
+import About from "~/components/About";
 import { getDirs, getFile } from "~/utils/fs.server";
 
 export const meta: MetaFunction = () => {
@@ -30,11 +31,7 @@ export default function Index() {
   const { posts } = useLoaderData<typeof loader>();
   return (
     <main className="w-full max-w-screen-md mx-auto pt-16 px-4 lg:px-0">
-      <div className="flex flex-row justify-between items-center">
-        <h1>Daniel Lucas – Blog</h1>
-        <Link to="https://danlgz.io" target="_blank" rel="noreferrer"><span>About</span></Link>
-      </div>
-      <p className="font-extralight mt-4 text-sm">Software Development / Management / Entrepreneurship</p>
+      <About />
 
       <div className="mt-16 flex flex-col gap-8">
         {
