@@ -1,5 +1,6 @@
 import { runSync } from "@mdx-js/mdx";
 import * as runtime from 'react/jsx-runtime';
+import * as embeds from 'mdx-embed';
 
 type Props = {
   code: string;
@@ -15,5 +16,5 @@ export default function MDX({ code }: Props) {
     jsxs: runtime.jsxs,
   });
 
-  return <Content />;
+  return <Content components={embeds} />;
 }

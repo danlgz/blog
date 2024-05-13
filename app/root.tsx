@@ -11,6 +11,7 @@ import tailwind from "~/styles/tailwind.css?url";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwind },
+  { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" }
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
