@@ -39,11 +39,7 @@
 }
 
 .markdown blockquote {
-    @apply relative -left-2 -ml-4 mb-8 pl-4;
-    font-style: italic;
-    border-left: 3px solid hsla(0, 0%, 0%, 0.9);
-    border-left-color: inherit;
-    opacity: 0.8;
+    @apply relative -left-2 -ml-4 mb-8 pl-4 border-opacity-90 text-opacity-90 italic border-l-4 border-main dark:border-main-dark;
 }
 
 .markdown blockquote p {
@@ -56,24 +52,19 @@
 }
 
 .markdown ul {
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    margin-bottom: 1.75rem;
-    list-style-position: outside;
-    list-style-image: none;
-    list-style: disc;
+    @apply list-disc list-inside mb-4;
+}
+
+.markdown ol {
+    @apply list-decimal list-inside mb-4;
 }
 
 .markdown li {
-    margin-bottom: calc(1.75rem / 2);
+    @apply ml-4;
 }
 
 .markdown img {
     @apply mb-8;
-    max-width: 100%;
 }
 
 :not(.mdx-embed) > iframe {

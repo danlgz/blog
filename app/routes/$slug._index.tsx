@@ -6,6 +6,8 @@ import { compile } from "@mdx-js/mdx";
 import MDX from "~/components/MDX";
 import markdownStyles from "~/styles/markdown.css?url";
 import rehypeHighlight from 'rehype-highlight';
+import {visit} from 'unist-util-visit'
+
 
 // Note: `@remark-embedder` is currently using faux-esm.
 // eslint-disable-next-line
@@ -38,7 +40,25 @@ export const loader = async ({ params: { slug } }: LoaderFunctionArgs) => {
         content,
         {
           outputFormat: 'function-body',
-          rehypePlugins: [rehypeHighlight],
+          rehypePlugins: [
+            () => (tree) => {
+              visit(tree, (node) => {
+                if (node?.type === "element" && node?.tagName === "pre") {
+                  const [codeEl] = node.children;
+
+                  if (codeEl.tagName !== "code") return;
+
+                  node.raw = codeEl.children?.[0].value;
+                  console.log(tree)
+                  node.properties = {
+                    raw: node.raw,
+                  };
+                  // console.log(node.raw)
+                }
+              });
+            },
+            rehypeHighlight,
+          ],
           remarkPlugins: [
             [
               remarkEmbedder,
