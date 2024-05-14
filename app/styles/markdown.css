@@ -63,6 +63,10 @@
     @apply ml-4;
 }
 
+.markdown li p {
+    @apply inline;
+}
+
 .markdown img {
     @apply mb-8;
 }
@@ -73,4 +77,16 @@
 
 iframe {
     @apply mb-6 !important;
+}
+
+.markdown table {
+    @apply w-full mb-8 table-auto text-main dark:text-main-dark;
+}
+
+.markdown table th {
+    @apply border border-main dark:border-main-dark bg-main/10 dark:bg-main-dark/10;
+}
+
+.markdown table td {
+    @apply border border-main dark:border-main-dark;
 }

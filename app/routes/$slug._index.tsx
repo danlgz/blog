@@ -7,6 +7,7 @@ import MDX from "~/components/MDX";
 import markdownStyles from "~/styles/markdown.css?url";
 import rehypeHighlight from 'rehype-highlight';
 import {visit} from 'unist-util-visit'
+import remarkGfm from 'remark-gfm'
 
 
 // Note: `@remark-embedder` is currently using faux-esm.
@@ -60,9 +61,10 @@ export const loader = async ({ params: { slug } }: LoaderFunctionArgs) => {
             rehypeHighlight,
           ],
           remarkPlugins: [
+            remarkGfm,
             [
               remarkEmbedder,
-              {transformers: [oembedTransformer]}
+              {transformers: [oembedTransformer]},
             ]
           ],
         }
