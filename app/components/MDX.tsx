@@ -1,6 +1,7 @@
 import { runSync } from "@mdx-js/mdx";
 import * as runtime from 'react/jsx-runtime';
 import * as embeds from 'mdx-embed';
+import { ImgClientOnly } from "./Img";
 
 type Props = {
   code: string;
@@ -16,5 +17,8 @@ export default function MDX({ code }: Props) {
     jsxs: runtime.jsxs,
   });
 
-  return <Content components={embeds} />;
+  return <Content components={{
+    ...embeds,
+    Img: ImgClientOnly,
+  }} />;
 }

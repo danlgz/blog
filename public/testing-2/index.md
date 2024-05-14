@@ -1,12 +1,14 @@
 ---
-title: "Testing blogggg"
-date: '2024-05-11'
+title: "Prueba de bloggg"
+date: "2024-05-13"
 description: "The limits of my language mean the limits of my world."
 ---
 
-# Tradeoff de trabajar en startups
+# Testing 2
 
+Esta es una seunda prueba xd
 
+<Img src="yoda.jpg" />
 
 
 Some description of the topic
@@ -34,9 +36,3 @@ print('hey')
 ```js
 console.log("hello")
 ```
-
-*link* [link](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-
-https://www.youtube.com/watch?v=dQw4w9WgXcQ
-
-<Instagram instagramId="C2NQAlMLub7" />

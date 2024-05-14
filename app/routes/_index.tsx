@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import Footer from "~/components/Footer";
 import PostListItem from "~/components/PostListItem";
 import About from "~/components/About";
-import { getDirs, getFile } from "~/utils/fs.server";
+import { getDirsFromPublic, getFileFromPublic } from "~/utils/fs.server";
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,15 +14,15 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  const dirs = (await getDirs("../posts")).filter(d => d.isDirectory()).map(d => d.name);
+  const dirs = (await getDirsFromPublic()).filter(d => d.isDirectory()).map(d => d.name);
   const fileContents = await Promise.all(
-    dirs.map((dir) => getFile(`../posts/${dir}/index.md`)),
+    dirs.map((dir) => getFileFromPublic(`${dir}/index.md`)),
   );
   const posts = dirs.map((slug, i) => {
     const fileContent = fileContents[i];
     const { data } = matter(fileContent);
     return { slug, ...data } as { slug: string; title: string; date: string; description: string };
-  });
+  }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return json({ posts });
 }

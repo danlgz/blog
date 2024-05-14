@@ -1,6 +1,6 @@
 import { LinksFunction, LoaderFunctionArgs, MetaFunction, json } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
-import { getFile } from "~/utils/fs.server";
+import { getFileFromPublic } from "~/utils/fs.server";
 import matter from "gray-matter";
 import { compile } from "@mdx-js/mdx";
 import MDX from "~/components/MDX";
@@ -19,9 +19,8 @@ const oembedTransformer = fauxOembedTransformer.default;
 
 
 // helpers
-
 const getMarkdown = async (slug: string) => {
-  const file = await getFile(`../posts/${slug}/index.md`);
+  const file = await getFileFromPublic(`${slug}/index.md`);
   return matter(file);
 }
 
@@ -45,7 +44,7 @@ export const loader = async ({ params: { slug } }: LoaderFunctionArgs) => {
               remarkEmbedder,
               {transformers: [oembedTransformer]}
             ]
-          ]
+          ],
         }
       )
     ),

@@ -4,10 +4,12 @@ import { readFile, readdir } from "node:fs/promises";
 import * as url from 'url';
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-export async function getFile(path: string) {
-  return await readFile(`${__dirname}/${path}`, "utf-8");
+const POST_RELATIVE_DIR = '../../public';
+
+export async function getFileFromPublic(path: string) {
+  return await readFile(`${__dirname}${POST_RELATIVE_DIR}/${path}`, "utf-8");
 }
 
-export async function getDirs(path: string) {
-  return await readdir(`${__dirname}/${path}`, { withFileTypes: true });
+export async function getDirsFromPublic(path: string = '') {
+  return await readdir(`${__dirname}${POST_RELATIVE_DIR}/${path}`, { withFileTypes: true });
 }
