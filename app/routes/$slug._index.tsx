@@ -50,11 +50,9 @@ export const loader = async ({ params: { slug } }: LoaderFunctionArgs) => {
                   if (codeEl.tagName !== "code") return;
 
                   node.raw = codeEl.children?.[0].value;
-                  console.log(tree)
                   node.properties = {
                     raw: node.raw,
                   };
-                  // console.log(node.raw)
                 }
               });
             },
