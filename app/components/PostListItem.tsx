@@ -2,6 +2,7 @@ type Props = {
   title: string;
   date: Date;
   spoiler: string;
+  className?: string;
 }
 
 export default function PostListItem({ title, date, spoiler }: Props) {

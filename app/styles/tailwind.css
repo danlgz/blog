@@ -31,3 +31,10 @@ a {
 hr {
     @apply border-t border-main dark:border-main-dark;
 }
+
+/* Force darkmode */
+@media (prefers-color-scheme: light) {
+  .force-text-dark * {
+    @apply text-main-dark;
+  }
+}
