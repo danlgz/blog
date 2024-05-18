@@ -1,10 +1,46 @@
 ---
 title: "Testing blogggg"
 date: "2024-05-11"
-description: "The limits of my language mean the limits of my world."
+description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
 ---
 
-# Prueba prueba
+## Lista de pronombres personales
+
+|  italiano   | español               |
+| :---------: |:---------------------:|
+| Io          |    yo                 |
+| Tu          |    tu                 |
+| Lui         |    el                 |
+| Lei         |    ella               |
+| Noi         |  nosotros             |
+| Voi         |  ustedes / vosotros   |
+| Loro        |  ellos                |
+
+<br /><br /><br />
+
+Como en español, el pronombre determina como se conjuga el verbo en la oración. Un ejemplo, con el verbo **dormire**:
+
+* Io **dormo**
+  _Yo duermo_
+
+* Tu **dormi**
+  _Tu duermes_
+
+* Lei/Lui **dorme**
+  _El/ella duerme_
+
+* Noi **dormiamo**
+  _Nosotros dormimos_
+
+* Voi **dormite**
+  _Ustedes duermen_
+
+* Loro **dormono**
+  _Ellos duermen_
+
+Y así con cada verbo que uses.
+
+<br />
 
 Markdown testttt
 
