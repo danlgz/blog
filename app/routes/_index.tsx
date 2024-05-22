@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from "@remix-run/cloudflare";
 import { Link, json, useLoaderData } from "@remix-run/react";
 import matter from "gray-matter";
 import Footer from "~/components/Footer";

@@ -1,4 +1,4 @@
-import { LinksFunction, LoaderFunctionArgs, MetaFunction, json } from "@remix-run/node"
+import { LinksFunction, LoaderFunctionArgs, MetaFunction, json } from "@remix-run/cloudflare"
 import { useLoaderData } from "@remix-run/react"
 import { getFileFromPublic } from "~/utils/fs.server";
 import matter from "gray-matter";
